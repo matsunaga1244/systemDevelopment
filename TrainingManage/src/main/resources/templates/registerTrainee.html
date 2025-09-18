@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>研修生登録画面</title>
+	<link th:href="@{css/main.css}" rel="stylesheet" />
+	<link th:href="@{css/burger.css}" rel="stylesheet" />
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+</head>
+<body>
+	<header th:replace="parts/parts::hamburger"></header>
+	<form th:action="@{/trList}" th:object="${trListForm}" method="post" name="trListForm">
+		<div align="center">
+
+		</div>
+	</form>
+	<script type="text/javascript" th:src="@{/js/jquery-3.7.0.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/burger.js}"></script>
+</body>
+</html>

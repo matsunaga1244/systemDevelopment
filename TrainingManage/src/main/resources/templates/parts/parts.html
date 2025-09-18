@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+	<meta charset = "UTF-8">
+	<title>パーツ</title>
+</head>
+		<!-- ヘッダー -->
+	<header id="header" class="header" th:fragment = "hamburger">
+		<form th:action="@{/menu}" method="post" name="menu" id="menu">
+			<div class="header-inner content-wrpper">
+				<!-- ハンバーガーボタン -->
+				<div id="header-hamburger">
+					<span></span> <span></span> <span></span>
+				</div>
+			</div>
+			<!-- ハンバーガーウィンドウ -->
+			<div id="hamburger-window">
+				<ul class="hamburger-window__nav-list">
+					<li class="hamburger-window__link">
+						<div class="acordion-menu-wrapper">
+							<span class="acordion-btn child">
+								<span class="hamburger-window__title p">研修生</span>
+							</span>
+							<ul class="acordion">
+								<li class="acordion__item">
+									<span class="acordion__link child" onClick="menuClick('trList');">一覧</span>
+								</li>
+								<li class="acordion__item">
+									<span class="acordion__link child" onClick="menuClick('trRegi');" >登録</span>
+								</li>
+								<li class="acordion__item">
+									<span class="acordion__link child" onClick="menuClick('trUpde');">更新</span>
+								</li>
+								<li class="acordion__item">
+									<span class="acordion__link child" onClick="menuClick('trDele');">削除</span>
+								</li>
+								<li class="acordion__item">
+									<span class="acordion__link child" onClick="menuClick('trCount');" >カウント</span>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="hamburger-window__link">
+						<div class="acordion-menu-wrapper">
+							<span class="acordion-btn">
+								<span class="hamburger-window__title">講師</span>
+							</span>
+							<ul class="acordion">
+								<li class="acordion__item"><span class="acordion__link" >一覧</span></li>
+								<li class="acordion__item"><span class="acordion__link" >登録</span></li>
+								<li class="acordion__item"><span class="acordion__link" >更新</span></li>
+								<li class="acordion__item"><span class="acordion__link" >削除</span></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</form>
+	</header>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{css/main.css}" rel="stylesheet" />
+</head>
+<body>
+	<form th:action="@{/trList}" method="post">
+		<table th:if = "${session.list != null}" border="1" class="result">
+			<tr>
+				<td>名前</td>
+				<td>性別</td>
+				<td>新卒：中途</td>
+				<td>研修開始日</td>
+				<td>pc番号</td>
+				<td>st2合格日数</td>
+				<td>担当講師</td>
+			</tr>
+			<tr th:each="data : ${session.list}">
+				<td th:text = "${data.name}">
+				<td th:text = "${data.gender}">
+				<td th:text = "${data.newhalfway}">
+				<td th:text = "${data.trainingStart}">
+				<td th:text = "${data.pcNumber}">
+				<td th:text = "${data.step2Pass}">
+				<td th:text = "${data.lecturerName}">
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

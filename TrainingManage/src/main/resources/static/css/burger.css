@@ -1,0 +1,239 @@
+@charset "UTF-8";
+
+.child {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+.header {
+	height: fit-content;
+	background-color: rgba(255, 255, 255, 1);
+	width: 100%;
+	z-index: 1000;
+}
+
+/* ---------------------------------------------- */
+/* ハンバーガーメニュー */
+/* ------------------------- */
+#header-hamburger {
+	/* 見た目のCSS */
+	background: #000080;
+	cursor: pointer;
+	width: 50px;
+	aspect-ratio: 1/1;
+	margin-left: auto;
+	/* ボタンがハンバーガーウィンドウの下に隠れないようにする指定 */
+	position: relative;
+	z-index: 10;
+}
+
+/* ----------------- */
+/* 三本線 */
+/* ----------------- */
+#header-hamburger span {
+	/* 見た目のCSS */
+	display: inline-block;
+	background: #fff;
+	width: 50%;
+	height: 2px;
+	/* バーガー線の太さ */
+	/*アニメーションの設定*/
+	transition: all .4s;
+	position: absolute;
+	left: 50%;
+	/* バーガー線の位置 */
+	transform: translateX(-50%);
+}
+
+/* １本目 */
+#header-hamburger span:nth-of-type(1) {
+	top: 30%;
+}
+
+/* ２本目 */
+#header-hamburger span:nth-of-type(2) {
+	top: 50%;
+}
+
+/* ３本目 */
+#header-hamburger span:nth-of-type(3) {
+	top: 70%;
+}
+
+/* ------------------ */
+/* ×印 */
+/* ------------------ */
+/*activeクラスが付与されると線が回転して×になる*/
+#header-hamburger.active span:nth-of-type(1) {
+	top: 50%;
+	left: 25%;
+	transform: rotate(-45deg);
+	width: 50%;
+}
+
+#header-hamburger.active span:nth-of-type(2) {
+	opacity: 0;
+}
+
+#header-hamburger.active span:nth-of-type(3) {
+	top: 50%;
+	left: 25%;
+	transform: rotate(45deg);
+	width: 50%;
+}
+
+/* ----------------------------------------------- */
+/* メニューウィンドウ */
+/* -------------------------- */
+#hamburger-window {
+	transition: 0.3s;
+	text-align: center;
+	/* 初期状態は非表示 */
+	visibility: hidden;
+	position: fixed;
+	top: 50px;
+	right: -100vw;
+	z-index: 1;
+	/* 画面いっぱいに表示されるサイズに設定 */
+	width: 15%;
+	height: calc(100vh - 50px);
+	/* 画面からはみ出したらスクロール可能にする */
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	background-image: url(../img/snow.jpg);
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+/*スクロールバー非表示（Chrome・Safari）*/
+.content::-webkit-scrollbar {
+	display: none;
+}
+
+#hamburger-window.open {
+	visibility: visible;
+	right: 0;
+}
+
+.hamburger-window__link {
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+}
+
+.hamburger-window__link:first-child .acordion-btn {
+	border-top: 1px solid #ccc;
+}
+
+/* ----------------------------------
+アコーディオン部分
+--------------------- */
+.acordion-menu-wrapper {
+	background-color: #3399FF;
+	height: 100%;
+}
+
+.acordion-btn {
+	display: flex;
+	align-items: center;
+	padding-left: 5%;
+	height: 70px;
+}
+
+.acordion-btn:hover {
+	background-color: #66CCFF;
+}
+
+.acordion-btn::after {
+	/* fontawesomeアイコンを表示 */
+	content: '\2b';
+	font-weight: 900;
+	font-family: "Font Awesome 6 Free";
+	display: inline-block;
+	position: absolute;
+	right: 5%;
+	width: 10px;
+	aspect-ratio: 1/1;
+	color: #333;
+}
+
+.acordion-btn.is-open::after {
+	/* fontawesomeアイコンを表示 */
+	content: '\2d';
+}
+
+.acordion>.acordion__item {
+	position: relative;
+	text-align: left;
+	width: 100%;
+	background-color: #99CCFF;
+	/* 閉じている状態 */
+	border-top: 0 #ccc solid;
+	line-height: 0;
+	/* 閉じるアニメーション */
+	transition: border-top .1s ease-out,
+}
+
+.acordion.is-open>.acordion__item {
+	background-color: #99CCFF;
+	/* 開いている状態 */
+	border-top: 1px #ccc solid;
+	/* 開くアニメーション */
+	transition: border-top .1s ease-out,
+}
+
+.acordion.is-open>.acordion__item:first-child {
+	border-top: none;
+}
+
+.acordion.is-open>.acordion__item::after {
+	/* fontawesomeアイコンを表示 */
+	content: '\f054';
+	font-weight: 900;
+	font-family: "Font Awesome 6 Free";
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	right: 10%;
+	width: 10px;
+	aspect-ratio: 1/1;
+	color: #333;
+}
+
+.acordion>.acordion__item>.acordion__link {
+	color: #333;
+	display: block;
+	padding-left: 7%;
+	/* 閉じている状態 */
+	padding-top: 0;
+	padding-bottom: 0;
+	line-height: 0;
+	opacity: 0;
+	visibility: hidden;
+	/* 閉じるアニメーション */
+	transition: padding-top .3s ease-out, padding-bottom .3s ease-out,
+		line-height .3s ease-out, opacity .1s linear, visibility .1s linear;
+}
+
+.acordion.is-open>.acordion__item>.acordion__link {
+	display: block;
+	padding-left: 7%;
+	/* 開いている状態 */
+	padding-top: 23px;
+	padding-bottom: 23px;
+	line-height: 1.5;
+	opacity: 1;
+	visibility: visible;
+	/* 開くアニメーション */
+	transition: padding-top .3s ease-out, padding-bottom .3s ease-out,
+		line-height .3s ease-out, opacity .1s linear, visibility .1s linear;
+}
