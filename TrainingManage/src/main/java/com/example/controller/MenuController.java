@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.model.LoginForm;
 import com.example.model.TrListForm;
+import com.example.model.TrRegiForm;
+import com.example.service.TrRegiService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -22,6 +24,9 @@ public class MenuController {
 	@Autowired
 	HttpSession session;
 
+	@Autowired
+	private TrRegiService TrRegiService;
+
 	@RequestMapping(value = "/menu", method = RequestMethod.POST)
 	public String request(Model model,@RequestParam("tran")String tran) {
 
@@ -31,6 +36,8 @@ public class MenuController {
 			session.removeAttribute("list");
 			break;
 		case "trRegi":
+			model.addAttribute("trRegiForm",new TrRegiForm());
+			session.setAttribute("lecturerNameList", TrRegiService.selectLecturer());
 			break;
 		case "trUpde":
 			break;

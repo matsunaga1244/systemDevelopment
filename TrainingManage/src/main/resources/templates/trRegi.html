@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>研修生登録画面</title>
+	<link th:href="@{css/main.css}" rel="stylesheet" />
+	<link th:href="@{css/burger.css}" rel="stylesheet" />
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+</head>
+<body>
+	<header th:replace="parts/parts::hamburger"></header>
+	<form th:action="@{/trRegi}" th:object="${trRegiForm}" method="post" name="trListForm">
+		<div class="main">
+			名前<input type="text" th:field="*{name}"><br/>
+			フリガナ<input type="text" th:field="*{furigana}"><br/>
+			男性<input type="radio" value="1" th:field="*{gender}"> 女性<input type="radio" value="1" th:field="*{gender}"><br/>
+			新卒<input type="radio" value="1" th:field="*{newhalfWay}"> 中途<input type="radio" value="1" th:field="*{newhalfWay}"><br/>
+			研修開始日<input type="date" th:field="*{trainingStart}"><br/>
+			pc番号<input type="text" th:field="*{pcNumber}"><br/>
+			担当講師
+			<select th:field="*{lecNumber}">
+				<option th:each="lecturerName : ${session.lecturerNameList}" th:text="${lecturerName.name}" th:value="${lecturerName.lecNumber}"></option>
+			</select><br/>
+		</div>
+	</form>
+	<script type="text/javascript" th:src="@{/js/jquery-3.7.0.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/burger.js}"></script>
+</body>
+</html>
