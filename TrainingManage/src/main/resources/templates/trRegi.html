@@ -10,17 +10,68 @@
 <body>
 	<header th:replace="parts/parts::hamburger"></header>
 	<form th:action="@{/trRegi}" th:object="${trRegiForm}" method="post" name="trListForm">
-		<div class="main">
-			名前<input type="text" th:field="*{name}"><br/>
-			フリガナ<input type="text" th:field="*{furigana}"><br/>
-			男性<input type="radio" value="1" th:field="*{gender}"> 女性<input type="radio" value="1" th:field="*{gender}"><br/>
-			新卒<input type="radio" value="1" th:field="*{newhalfWay}"> 中途<input type="radio" value="1" th:field="*{newhalfWay}"><br/>
-			研修開始日<input type="date" th:field="*{trainingStart}"><br/>
-			pc番号<input type="text" th:field="*{pcNumber}"><br/>
-			担当講師
-			<select th:field="*{lecNumber}">
-				<option th:each="lecturerName : ${session.lecturerNameList}" th:text="${lecturerName.name}" th:value="${lecturerName.lecNumber}"></option>
-			</select><br/>
+		<div class="main"  style="text-align: right">
+			<table>
+				<tr>
+					<td>
+						名前：
+					</td>
+					<td>
+						<input type="text" th:field="*{name}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						フリガナ：
+					</td>
+					<td>
+						<input type="text" th:field="*{furigana}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						性別：
+					</td>
+					<td style="text-align: left;">
+						男性<input type="radio" value="1" th:field="*{gender}"> 女性<input type="radio" value="1" th:field="*{gender}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						新卒中途区分：
+					</td>
+					<td style="text-align: left;">
+						新卒<input type="radio" value="1" th:field="*{newhalfWay}"> 中途<input type="radio" value="1" th:field="*{newhalfWay}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						研修開始日：
+					</td>
+					<td style="text-align: left;">
+						<input type="date" th:field="*{trainingStart}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						pc番号：
+					</td>
+					<td>
+						<input type="text" th:field="*{pcNumber}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						担当講師：
+					</td>
+					<td style="text-align: left;">
+						<select th:field="*{lecNumber}">
+							<option th:each="lecturerName : ${session.lecturerNameList}" th:text="${lecturerName.name}" th:value="${lecturerName.lecNumber}"></option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<input type="submit" value="登録" name="registration">
 		</div>
 	</form>
 	<script type="text/javascript" th:src="@{/js/jquery-3.7.0.min.js}"></script>
