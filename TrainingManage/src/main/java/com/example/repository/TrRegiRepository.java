@@ -8,7 +8,7 @@ import org.seasar.doma.Select;
 import org.seasar.doma.boot.ConfigAutowireable;
 
 import com.example.domain.LecturerEntity;
-import com.example.model.TrRegiForm;
+import com.example.domain.TrListEntity;
 
 @ConfigAutowireable
 @Dao
@@ -16,6 +16,6 @@ public interface TrRegiRepository {
 	@Select
 	List<LecturerEntity> selectLecturer();
 
-	@Insert
-	int insertTrainee(TrRegiForm form);
+	@Insert(sqlFile=true)
+	int insertTrainee(TrListEntity entity);
 }

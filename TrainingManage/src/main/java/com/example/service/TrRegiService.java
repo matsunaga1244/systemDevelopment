@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.LecturerEntity;
+import com.example.domain.TrListEntity;
 import com.example.model.TrRegiForm;
 import com.example.repository.TrRegiRepository;
 
@@ -24,7 +25,16 @@ public class TrRegiService {
     }
 
 	public int registration(TrRegiForm form) {
-		trRegiRepository.insertTrainee(form);
+		TrListEntity entity = new TrListEntity();
+		entity.setPcNumber(form.getPcNumber());
+		entity.setName(form.getName());
+		entity.setGender(form.getGender());
+		entity.setFurigana(form.getFurigana());
+		entity.setNewhalfway(form.getNewhalfWay());
+		entity.setTrainingStart(form.getTrainingStart());
+		entity.setLecturerName(form.getLecNumber());
+
+		trRegiRepository.insertTrainee(entity);
 		return 0;
 	}
 }

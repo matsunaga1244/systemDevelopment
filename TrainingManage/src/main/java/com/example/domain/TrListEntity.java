@@ -14,6 +14,9 @@ public class TrListEntity {
 	@Column(name = "NAME")
 	private String name;
 
+	@Column(name = "FURIGANA")
+	private String furigana;
+
 	@Column(name = "GENDER")
 	private String gender;
 
