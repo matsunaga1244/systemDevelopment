@@ -10,7 +10,7 @@
 <body>
 	<header th:replace="parts/parts::hamburger"></header>
 	<form th:action="@{/trRegi}" th:object="${trRegiForm}" method="post" name="trListForm">
-		<div class="main"  style="text-align: right">
+		<div class="main"  style="text-align: right;height: 450px;width:">
 			<table>
 				<tr>
 					<td>
@@ -72,6 +72,10 @@
 				</tr>
 			</table>
 			<input type="submit" value="登録" name="registration">
+			<div style = "color:red;" th:if = "${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+			<div style = "color:red;" th:if = "${#fields.hasErrors('furigana')}" th:errors="*{furigana}"></div>
+			<div style = "color:red;" th:if = "${#fields.hasErrors('pcNumber')}" th:errors="*{pcNumber}"></div>
+			<div style="color:red" th:text=${message}></div>
 		</div>
 	</form>
 	<script type="text/javascript" th:src="@{/js/jquery-3.7.0.min.js}"></script>

@@ -31,10 +31,12 @@ public class MenuController {
 	public String request(Model model,@RequestParam("tran")String tran) {
 
 		switch(tran){
+		//　検索
 		case "trList":
 			model.addAttribute("trListForm",new TrListForm());
 			session.removeAttribute("list");
 			break;
+		// 登録
 		case "trRegi":
 			model.addAttribute("trRegiForm",new TrRegiForm());
 			session.setAttribute("lecturerNameList", TrRegiService.selectLecturer());

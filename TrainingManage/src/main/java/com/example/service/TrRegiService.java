@@ -24,6 +24,7 @@ public class TrRegiService {
 		return list;
     }
 
+	// 登録処理
 	public int registration(TrRegiForm form) {
 		TrListEntity entity = new TrListEntity();
 		entity.setPcNumber(form.getPcNumber());
